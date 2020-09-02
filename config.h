@@ -11,11 +11,11 @@ static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *altbarcmd        = "$HOME/.config/polybar/launch.sh"; /* Alternate bar launch command */
 static const char *fonts[]          = { "monospace:size=10", "twemoji:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#920075";
+static const char col_gray1[]       = "#2E3440";
+static const char col_gray2[]       = "#3B4252";
+static const char col_gray3[]       = "#434C5E";
+static const char col_gray4[]       = "#4C566A";
+static const char col_cyan[]        = "#B48EAD";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
+static const char *dmenucmd[] = { "/home/maku/.config/rofi/scripts/launcher.sh", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = {"alacritty", "-t", scratchpadname, "-d", "120", "34", NULL };
@@ -69,9 +69,9 @@ static const char *lockcmd[] = { "dm-tool", "lock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+        { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY, 			XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY, 			XK_s,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,		XK_l,	   spawn,	   {.v = lockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
